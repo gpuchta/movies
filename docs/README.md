@@ -2,7 +2,7 @@
 
 ## Screenshhot
 
-![Movie Browser][screenshot.gif]
+![Movie Browser](screenshot.gif)
 
 ## ffmpeg
 
