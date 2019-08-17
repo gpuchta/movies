@@ -2,7 +2,14 @@
 
 ## Screenshhot
 
-![Movie Browser](screenshot.gif)
+### Browser Your Movies
+![Browser Your Movies](README/screenshot-1.gif)
+
+### Settings, Backup and Restore
+![Settings, Backup and Restore](README/screenshot-2.gif)
+
+### Searching TheMovieDB
+![Searching TheMovieDB](README/screenshot-3.gif)
 
 ## ffmpeg
 
