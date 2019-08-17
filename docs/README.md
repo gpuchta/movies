@@ -1,5 +1,9 @@
 # Video Software
 
+## Screenshhot
+
+![Movie Browser][screenshot.gif]
+
 ## ffmpeg
 
 A complete, cross-platform solution to record, convert and stream
