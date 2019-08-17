@@ -1,0 +1,30 @@
+{
+  "QUERY": "https://api.themoviedb.org/3/search/movie?api_key=<api-key>&query=Ronin&year=1998",
+  
+  "page": 1,
+  "results": [
+    {
+      "poster_path": "/UoFUXemMYGKuCN01Y111JlPjjr.jpg",
+      "adult": false,
+      "overview": "A briefcase with undisclosed contents – sought by Irish terrorists and the Russian mob – makes its way into criminals' hands. An Irish liaison assembles a squad of mercenaries, or 'ronin', and gives them the thorny task of recovering the case.",
+      "release_date": "1998-09-25",
+      "genre_ids": [
+        28,
+        53,
+        80,
+        12
+      ],
+      "id": 8195,
+      "original_title": "Ronin",
+      "original_language": "en",
+      "title": "Ronin",
+      "backdrop_path": "/tzAtSkpEyAftOuNqcShaBOxWIkw.jpg",
+      "popularity": 2.952912,
+      "vote_count": 489,
+      "video": false,
+      "vote_average": 6.7
+    }
+  ],
+  "total_results": 1,
+  "total_pages": 1
+}

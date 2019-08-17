@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     style="enable-background:new 0 0 128 128;"
+     version="1.1"
+     xml:space="preserve"
+     width="160"
+     height="208">
+
+  <style type="text/css">
+  .st0{fill: none;}
+  .st1{fill: #626259;}
+  .st2{fill: #FFFFFF;}
+  </style>
+
+  <rect id="backgroundrect" width="100%" height="100%" x="0" y="0" stroke="none" class="st0"/>
+
+  <g class="currentLayer" style="">
+    <title>No Image</title>
+
+    <rect class="st1" stroke-dashoffset="" fill-rule="nonzero" id="svg_1" x="0" y="0"
+          width="160" height="208" style="color: rgb(0, 0, 0);"/>
+
+    <path class="st2" stroke-dashoffset="" fill-rule="nonzero" marker-start=""
+          marker-mid="" marker-end="" id="svg_10"
+          d="M40,70 L40,138 L120,138 L120,70 L40,70 zM108,133 L53,133 L53,76 L108,76 L108,133 zM66,98 C70,98 74,95 74,90 C74,86 70,82 66,82 C62,82 58,86 58,90 C58,95 62,98 66,98 zM105,105 L90,90 L70,111 L64,105 L56,114 L56,129 L105,129 L105,105 z"/>
+  </g>
+</svg>

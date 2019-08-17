@@ -1,0 +1,3 @@
+Dark Gold: ba7926
+Light Gold: f9bd04
+Backgroun: 1d1d1d

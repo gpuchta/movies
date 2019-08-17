@@ -1,0 +1,57 @@
+
+CREATE TABLE IF NOT EXISTS INDEX_MAP (
+  tmdb_id         INTEGER,
+  title           VARCHAR(200),
+  overview        LONGVARCHAR,
+  poster_path     VARCHAR(120),
+  backdrop_path   VARCHAR(120),
+  vote_average    DECIMAL,
+  vote_count      INTEGER,
+  budget          INTEGER,
+  revenue         INTEGER,
+  genres          VARCHAR(32) Array,
+  directors       VARCHAR(32) Array,
+  actors          VARCHAR(32) Array
+)
+
+
+{
+  "tmdb_id": 8195,
+  "title": "Ronin",
+  "overview": "A briefcase with undisclosed contents – sought by Irish terrorists and the Russian mob – makes its way into criminals' hands. An Irish liaison assembles a squad of mercenaries, or 'ronin', and gives them the thorny task of recovering the case.",
+  "poster_path": "/UoFUXemMYGKuCN01Y111JlPjjr.jpg",
+  "backdrop_path": "/tzAtSkpEyAftOuNqcShaBOxWIkw.jpg",
+  "vote_average": 6.7,
+  "vote_count": 489,
+  "budget": 55000000,
+  "revenue": 41610884,
+  "genres": [
+    "Action",
+    "Thriller",
+    "Crime",
+    "Adventure"
+  ],
+  "directors": [
+    "John Frankenheimer"
+  ],
+  "actors": [
+    "Robert De Niro",
+    "Jean Reno",
+    "Natascha McElhone",
+    "Stellan Skarsgård",
+    "Sean Bean",
+    "Jonathan Pryce",
+    "Skipp Sudduth",
+    "Katarina Witt",
+    "Michael Lonsdale",
+    "Jan T?íska",
+    "Ron Perkins",
+    "Féodor Atkine",
+    "Bernard Bloch",
+    "Dominic Gugliametti",
+    "Alan Beckworth",
+    "Daniel Breton",
+    "Amidou",
+    "Léopoldine Serre"
+  ]
+}

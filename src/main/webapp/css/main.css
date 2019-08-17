@@ -1,0 +1,307 @@
+body {
+  font-family: Arial;
+  background-color: #1c1c1c;
+  color: white;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+input {
+  outline: none;
+  border-style: none;
+  border-radius: 999px;
+  background-color: #4a4a4a;
+  color: #c5c5c5;
+  width: 100%;
+  padding-left: 13px;
+  padding-right: 13px;
+  font-size: 1em;
+}
+
+input[type=file] {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -9999px;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+/* ========================= */
+/* Page setup */
+/* ========================= */
+
+.layout {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  display: table-row;
+  width: 100%;
+  padding: 7px;
+  background-color: black;
+}
+
+.content {
+  display: table-row;
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ========================= */
+/* Header */
+/* ========================= */
+
+.header .first-row,
+.header .second-row {
+  margin: 7px 10px;
+}
+
+.header .first-row input,
+.header .first-row .action,
+.header .first-row .filter-count {
+  font-size: 1.5em;
+  padding: 0; /* safari adds extra padding to input fields */
+}
+
+.header .first-row {
+  display: flex;
+}
+
+.header .first-row input {
+  outline: none;
+  border-style: none;
+  border-radius: 999px;
+  background-color: #4a4a4a;
+  color: #f8f9fa;
+  -webkit-flex: 1; /* Safari 6.1+ */
+  -ms-flex: 1; /* IE 10 */ 
+  flex: 1;
+  width: 100%;
+  padding-left: 13px;
+  padding-right: 13px;  
+}
+
+.header .first-row > * {
+  margin-right: 10px;
+}
+
+.header .first-row > :last-child {
+  margin-right: 0;
+}
+
+.header .first-row input:focus {
+  background-color: #c5c5c5;
+  color: #4a4a4a;
+}
+
+.header .first-row .action {
+  outline: none;
+  background-color: #9c9c9c;
+  color: black;
+  text-decoration: none;
+  padding: 0 13px;
+  border-radius: 999px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  vertical-align: middle;
+}
+
+.header .first-row .action:hover {
+  background-color: #b13131;
+  color: #ffffff;
+}
+
+.header .first-row .filter-count {
+  vertical-align: middle;
+  color: #bb3939;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.settings-icon {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* Header second row */
+/* ========================= */
+
+.header .filter-criteria {
+  line-height: 2em;
+}
+
+.header .filter-criteria > * {
+  margin-right: 7px;
+  font-size: 1.5em;
+  display: inline-block; /* for wrapping */
+}
+
+/* ========================= */
+/* Content */
+/* ========================= */
+
+.scrollable {
+  padding: 7px;
+  /* margin-top: calc(3em + 7px + 7px); */
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ========================= */
+/* MyMovies Style */
+/* ========================= */
+
+.mymovies-font {
+  color: #f9be03 !important;
+}
+
+.mymovies-font-dim {
+  color: #846402 !important;
+}
+
+.mymovies-bgcolor {
+  color: #f9be03 !important;
+}
+
+/* ========================= */
+/* TMDB Style */
+/* ========================= */
+
+.tmdb-font {
+  color: #00d373 !important;
+}
+
+.tmdb-font-dim {
+  color: #008045 !important;
+}
+
+.tmdb {
+  border-radius: 4px;
+  padding: 0 7px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #00d373;
+  background-color: #081c24;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  border: solid 2px #00d373;
+}
+
+.tmdb:hover {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.tmdb-disabled {
+  border-radius: 4px;
+  padding: 0 7px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #b2b2b2;
+  background-color: #2a2a2a;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  border: solid 2px #b2b2b2;
+}
+
+.tmdb-disabled:hover {
+  color: white;
+  border-color: white;
+  transition: color 0.3s ease;
+  transition: border-color 0.3s ease;
+}
+
+/* ========================= */
+/* Labels */
+/* ========================= */
+
+span.negate {
+  text-decoration: line-through;  
+}
+
+span.literal,
+span.year,
+span.genre,
+span.actor,
+span.director,
+span.index,
+span.tmdbid {
+  border-radius: 4px;
+  padding: 0 7px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+span.literal,
+span.year,
+span.genre,
+span.actor,
+span.director,
+span.index {
+  color: #afafaf;
+}
+
+span.tmdbid {
+  color: #00d373;
+  border: solid 2px #00d373;  
+}
+
+span.literal {
+  background-color: #626259;
+}
+
+span.year {
+  background-color: #995428;
+}
+
+span.genre {
+  background-color: #386e7f;
+}
+
+span.actor {
+  background-color: #841d1d;
+}
+
+span.director {
+  background-color: #0d6312;
+}
+
+span.index {
+  background-color: #8f7111;
+}
+
+span.tmdbid {
+  background-color: #081c24;
+}
+
+span.literal:hover,
+span.year:hover,
+span.genre:hover,
+span.actor:hover,
+span.director:hover,
+span.index:hover,
+span.tmdbid:hover {
+  color: white;
+  transition: color 0.3s ease;
+}

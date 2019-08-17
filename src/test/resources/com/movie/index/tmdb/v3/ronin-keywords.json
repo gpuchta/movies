@@ -1,0 +1,18 @@
+{
+  "QUERY": "https://api.themoviedb.org/3/movie/8195/keywords?api_key=<api-key>&language=en-US",
+  "id": 8195,
+  "keywords": [
+    {
+      "id": 2001,
+      "name": "arms deal"
+    },
+    {
+      "id": 9776,
+      "name": "shot in the chest"
+    },
+    {
+      "id": 159688,
+      "name": "merry go round"
+    }
+  ]
+}

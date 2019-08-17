@@ -1,0 +1,37 @@
+.header .first-row {
+  display: block !important;
+  width: auto;
+  text-align: right;
+}
+
+.content .scrollable {
+  padding: 1em;
+}
+
+.content .scrollable h1,
+.content .scrollable h2,
+.content .scrollable h3 {
+  color: #939393;
+}
+
+.content .scrollable h1 {
+  font-size: x-large;
+}
+
+.content .scrollable h2 {
+  font-size: large;
+}
+
+.content .scrollable h3 {
+  font-size: medium;
+}
+
+.content .scrollable .description {
+  color: #666666;
+  font-size: 1em;
+}
+
+img.logo {
+  float: left;
+  margin-right: 1em;
+}

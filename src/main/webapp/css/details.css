@@ -1,0 +1,164 @@
+li.detail {
+  float: left;
+  margin: 0 3px;
+  width: calc(100% - 6px);
+}
+
+li.detail .highlight-line {
+  height: 3px;
+  background: #f9be03;
+  /* background: -webkit-linear-gradient(#f9be03, #3a361d); */ /* For Safari 5.1 to 6.0 */
+  /* background: -o-linear-gradient(#f9be03, #3a361d); */ /* For Opera 11.1 to 12.0 */
+  /* background: -moz-linear-gradient(#f9be03, #3a361d); */ /* For Firefox 3.6 to 15 */
+  /* background: linear-gradient(#f9be03, #3a361d); */ /* Standard syntax */
+}
+
+li.detail .detail-body {
+  height: auto;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background-color: #2a2a2a;
+  padding: 10px 20px;
+}
+
+li.detail .detail-body p:first-of-type {
+  margin-top: 0;
+}
+
+li.detail .detail-body p:last-of-type {
+  margin-bottom: 0.5em;
+}
+
+/* ========================= */
+/* Colors */
+/* ========================= */
+
+li.detail .title,
+li.detail .overview,
+li.detail .index {
+  color: #b1b1b1;
+}
+
+/* ========================= */
+/* First detail line */
+/* ========================= */
+
+li.detail .title,
+li.detail .year,
+a.tmdb-link,
+a.tmdb-detail-lookup {
+  vertical-align: middle;
+}
+
+li.detail .title {
+  font-size: 1.7em;
+  text-decoration: none;
+}
+
+li.detail .title,
+li.detail .year,
+a.tmdb-link {
+  margin-right: 1em;
+}
+
+/* ========================= */
+/* Other detail lines */
+/* ========================= */
+
+li.detail .genre,
+li.detail .actors,
+li.detail .directors {
+  line-height: 1.5em !important;
+}
+
+li.detail .overview {
+  line-height: 1.2em;
+  transition: color 0.8s ease;
+}
+
+li.detail .index {
+  vertical-align: bottom;
+  cursor: pointer;
+}
+
+li.detail .binder,
+li.detail .page,
+li.detail .provider {
+  color: #f9be03;
+  font-size: 1.5em;
+}
+
+li.detail .index,
+li.detail .index-edit,
+li.detail .movie-save,
+li.detail .movie-delete {
+  display: inline-block;
+}
+
+li.detail .index-edit,
+li.detail .movie-save,
+li.detail .movie-delete {
+  margin: 0 0 0 1em;
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+}
+
+li.detail .movie-save,
+li.detail .movie-delete {
+  float: right;
+}
+
+li.detail .index-edit {
+  background-image: url(../icon/icon-edit.svg)
+}
+
+li.detail .index-edit:hover {
+  background-image: url(../icon/icon-edit-active.svg)
+}
+
+li.detail .movie-delete {
+  background-image: url(../icon/icon-delete.svg)
+}
+
+li.detail .movie-delete:hover {
+  background-image: url(../icon/icon-delete-active.svg)
+}
+
+li.detail .movie-save {
+  background-image: url(../icon/icon-save.svg)
+}
+
+li.detail .movie-save:hover {
+  background-image: url(../icon/icon-save-active.svg)
+}
+
+li.detail .index-select {
+  font-size: 1.5em;
+  border-width: 0;
+  padding-left: .5em;
+  padding-right: .5em;
+  border-radius: 4px;
+  background-color: #f9be03;
+  color: #2a2a2a;  
+}
+
+/* ========================= */
+/* Drop down */
+/* ========================= */
+/*
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+
+.input-group .form-control:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;  
+}
+
+.input-group .form-control, .input-group-addon, .input-group-btn {
+  display: table-cell;
+}
+*/

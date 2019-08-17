@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>movies</display-name>
+  
+  <description>
+    TODO
+  </description>
+
+  <listener>
+    <listener-class>com.movie.index.container.listener.SetupListener</listener-class>
+  </listener>   
+   
+  <servlet>
+    <servlet-name>MovieImageServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.MovieImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieImageServlet</servlet-name>
+    <url-pattern>/poster/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MovieSettingsServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.MovieSettingsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieSettingsServlet</servlet-name>
+    <url-pattern>/settings</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MovieListingServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.MovieListingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieListingServlet</servlet-name>
+    <url-pattern>/all</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MovieStoreServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.MovieStoreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieStoreServlet</servlet-name>
+    <url-pattern>/store</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MovieDeleteServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.MovieDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieDeleteServlet</servlet-name>
+    <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MovieBackupServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.MovieBackupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieBackupServlet</servlet-name>
+    <url-pattern>/backup</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MovieRestoreServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.MovieRestoreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieRestoreServlet</servlet-name>
+    <url-pattern>/restore</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>TmdbMediaUrlServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.TmdbMediaUrlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TmdbMediaUrlServlet</servlet-name>
+    <url-pattern>/tmdb/mediabaseurl</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TmdbMovieSearchServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.TmdbMovieSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TmdbMovieSearchServlet</servlet-name>
+    <url-pattern>/tmdb/search</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TmdbMovieDetailServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.TmdbMovieDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TmdbMovieDetailServlet</servlet-name>
+    <url-pattern>/tmdb/detail/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TmdbMovieAnalyzerServlet</servlet-name>
+    <servlet-class>com.movie.index.container.servlet.TmdbMovieAnalyzerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TmdbMovieAnalyzerServlet</servlet-name>
+    <url-pattern>/tmdb/analyze</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
