@@ -1,5 +1,14 @@
 package com.movie.index.db;
 
+import com.movie.index.Config;
+import com.movie.index.db.dao.MovieDao;
+import com.movie.index.db.dao.SettingsDao;
+import com.movie.index.exception.MovieSqlException;
+import org.hsqldb.Server;
+import org.hsqldb.jdbc.JDBCDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -7,36 +16,21 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.hsqldb.Server;
-import org.hsqldb.jdbc.JDBCDataSource;
-
-import com.movie.index.Config;
-import com.movie.index.db.dao.MovieDao;
-import com.movie.index.db.dao.SettingsDao;
-import com.movie.index.exception.MovieSqlException;
-import com.movie.index.util.ExtLogger;
-
 class HsqlDb implements Datastore {
-
-  private static final ExtLogger LOG = ExtLogger.getLogger(HsqlDb.class);
-
   private static final String DB_PROTOCOL_FILE = "jdbc:hsqldb:file";
-
   private static final String USERNAME = "SA";
-
   private static final String PASSWORD = "";
 
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
   private Config _config;
-
   private String _url;
-
   private Server _server;
 
   public HsqlDb(Config config) {
     _config = config;
     File dbFolder = config.getDbFolder();
     if(!dbFolder.exists()) {
-      LOG.info("creating database folder %s", dbFolder.getAbsolutePath());
+      LOG.info("creating database folder {}", dbFolder.getAbsolutePath());
       dbFolder.mkdirs();
     }
   }

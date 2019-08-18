@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <property name="HOME_LOG" value="logs/app.log"/>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+    </layout>
+  </appender>
+
+  <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.base}/logs/movies.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.base}/logs/movies-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>10MB</maxFileSize>
+      <totalSizeCap>40MB</totalSizeCap>
+      <maxHistory>3</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="com.movie.index" level="trace" additivity="false">
+    <appender-ref ref="FILE-ROLLING"/>
+  </logger>
+
+  <root level="error">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+
+</configuration>

@@ -1,19 +1,19 @@
 package com.movie.index.container.listener;
 
+import com.movie.index.container.service.MovieServletContext;
+import com.movie.index.container.service.ServiceManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.movie.index.container.service.MovieServletContext;
-import com.movie.index.container.service.ServiceManager;
-import com.movie.index.util.ExtLogger;
-
 
 public class SetupListener implements ServletContextListener, ServletContextAttributeListener {
-
-  private static final ExtLogger LOG = ExtLogger.getLogger(SetupListener.class);
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
 
   @Override
   public void contextInitialized(ServletContextEvent event) {

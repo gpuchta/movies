@@ -1,10 +1,5 @@
 package com.movie.index.container.service;
 
-import java.io.File;
-import java.util.Optional;
-
-import javax.servlet.ServletContext;
-
 import com.movie.index.Config;
 import com.movie.index.app.environment.EnvironmentManager;
 import com.movie.index.app.image.ImageManager;
@@ -14,16 +9,17 @@ import com.movie.index.db.Datastore;
 import com.movie.index.db.DatastoreFactory;
 import com.movie.index.db.dao.DaoFactory;
 import com.movie.index.tmdb.v3.TmdbManager;
-import com.movie.index.util.ExtLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.ServletContext;
+import java.io.File;
+import java.util.Optional;
 
 public class ServiceManager {
-
-  private static final ExtLogger LOG = ExtLogger.getLogger(ServiceManager.class);
-
   private static final String WEB_INF = "/WEB-INF";
-
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
   private final ServletContext _context;
-
   private Optional<Datastore> _store = Optional.empty();
 
   public ServiceManager(ServletContext context) {

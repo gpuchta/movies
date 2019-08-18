@@ -1,20 +1,20 @@
 package com.movie.index.app.environment;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-import org.apache.commons.io.FileUtils;
-
 import com.movie.index.Config;
 import com.movie.index.app.model.Environment;
 import com.movie.index.exception.MovieIOException;
 import com.movie.index.exception.MovieSettingsException;
-import com.movie.index.util.ExtLogger;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class EnvironmentManager {
 
-  private static final ExtLogger LOG = ExtLogger.getLogger(EnvironmentManager.class);
+  private static final Logger LOG = LoggerFactory.getLogger(EnvironmentManager.class);
 
   private static final String CONFIG_FILE = "config.json";
 

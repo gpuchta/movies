@@ -1,5 +1,12 @@
 package com.movie.index.db.dao;
 
+import com.movie.index.app.callback.Callback;
+import com.movie.index.app.model.Movie;
+import com.movie.index.db.Datastore;
+import com.movie.index.exception.MovieDaoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,16 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.movie.index.app.callback.Callback;
-import com.movie.index.app.model.Movie;
-import com.movie.index.db.Datastore;
-import com.movie.index.exception.MovieDaoException;
-import com.movie.index.util.ExtLogger;
-
 public class MovieDao {
-
-  private static final ExtLogger LOG = ExtLogger.getLogger(MovieDao.class);
-
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
   private Datastore _store;
 
   MovieDao(Datastore store) {
@@ -62,7 +61,7 @@ public class MovieDao {
   }
 
   public Optional<Movie> getMovieById(int tmdbId) {
-    LOG.info("Get movie %d", tmdbId);
+    LOG.info("Get movie {}", tmdbId);
     try {
       Connection connection = _store.getConnection();
 
@@ -88,7 +87,7 @@ public class MovieDao {
   }
 
   public boolean persist(Movie movie) {
-    LOG.info("Persist movie %s (%d)", movie.getTitle(), movie.getTmdbId());
+    LOG.info("Persist movie {} ({})", movie.getTitle(), movie.getTmdbId());
     try {
       Connection connection = _store.getConnection();
 
@@ -126,7 +125,7 @@ public class MovieDao {
   }
 
   public boolean delete(int tmdbId) {
-    LOG.info("Delete movie %d", tmdbId);
+    LOG.info("Delete movie {}", tmdbId);
     try {
       Connection connection = _store.getConnection();
 
@@ -134,7 +133,7 @@ public class MovieDao {
         PreparedStatement pStatement = connection.prepareStatement("DELETE FROM movies WHERE tmdb_id = ?");
         pStatement.setLong(1, tmdbId);
         if(pStatement.executeUpdate() == 0) {
-          LOG.info("Could not delete tmdb ID %d", tmdbId);
+          LOG.info("Could not delete tmdb ID {}", tmdbId);
         }
         pStatement.close();
         connection.commit();
@@ -157,7 +156,7 @@ public class MovieDao {
   }
 
   public boolean restore(List<Movie> movies, Callback<Movie> movieCallback) {
-    LOG.info("Restore %d movies", movies.size());
+    LOG.info("Restore {} movies", movies.size());
     try {
       Connection connection = _store.getConnection();
 

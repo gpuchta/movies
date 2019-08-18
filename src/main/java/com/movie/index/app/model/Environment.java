@@ -1,18 +1,18 @@
 package com.movie.index.app.model;
 
-import java.io.File;
-
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
-import com.movie.index.Logging;
-import com.movie.index.util.ExtLogger;
 import com.movie.index.util.gson.FileDeserializer;
 import com.movie.index.util.gson.FileSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class Environment implements Logging {
+import java.io.File;
 
-  private static final ExtLogger LOG = ExtLogger.getLogger(Environment.class);
+public class Environment {
+
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
 
   @SerializedName("data_folder")
   protected File _dataFolder;
@@ -61,6 +61,6 @@ public class Environment implements Logging {
   }
 
   public void log() {
-    LOG.info(CONFIG_LOG_FORMAT, "Data folder", _dataFolder.getAbsolutePath());
+    LOG.info("Data folder     {}", _dataFolder.getAbsolutePath());
   }
 }

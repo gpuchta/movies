@@ -1,22 +1,5 @@
 package com.movie.index.tmdb.v3;
 
-import static com.movie.index.util.Arguments.arg;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicHeader;
-
 import com.movie.index.exception.MovieException;
 import com.movie.index.tmdb.v3.model.TmdbCredits;
 import com.movie.index.tmdb.v3.model.TmdbKeywords;
@@ -27,12 +10,30 @@ import com.movie.index.util.GsonHelper;
 import com.movie.index.util.HttpConstants;
 import com.movie.index.util.StringUtils;
 import com.movie.index.util.URLEncoderUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicHeader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import static com.movie.index.util.Arguments.arg;
 
 public class TmdbManager implements TmdbApi {
-
+  protected final Logger LOG = LoggerFactory.getLogger(getClass());
   private static final String TMDB_MOVIE_SEARCH_PATH = "search/movie";
   private static final String TMDB_MOVIE_DETAIL_PATH = "movie";
-
+  private final TmdbRateLimiter _tmdbRateLimiter = new TmdbRateLimiter();
   private String _apiKey;
 
   public TmdbManager(String apiKey) {
@@ -155,6 +156,7 @@ public class TmdbManager implements TmdbApi {
    */
   protected String getAsJson(String url) {
     try {
+      LOG.trace("GET {}", url);
       HttpGet httpGet = new HttpGet(url);
       httpGet.addHeader(new BasicHeader(HttpHeaders.ACCEPT, HttpConstants.APPLICATION_JSON));
       httpGet.addHeader(new BasicHeader(HttpHeaders.CONTENT_TYPE, HttpConstants.CONTENT_TYPE_JSON_UTF_8));
@@ -163,6 +165,8 @@ public class TmdbManager implements TmdbApi {
       try(CloseableHttpResponse response = httpclient.execute(httpGet)) {
 
         if(response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+          LOG.trace("Status {}", response.getStatusLine().getStatusCode());
+          LOG.trace("Response {}", response.getStatusLine().getReasonPhrase());
           throw new MovieException(response.getStatusLine().getReasonPhrase());
         }
 
@@ -171,7 +175,7 @@ public class TmdbManager implements TmdbApi {
             .collect(Collectors.joining("\n"));
 
         String actualContentType = response.getHeaders(HttpHeaders.CONTENT_TYPE)[0].getValue();
-        if (actualContentType.indexOf(HttpConstants.APPLICATION_JSON) == -1) {
+        if (!actualContentType.contains(HttpConstants.APPLICATION_JSON)) {
           StringBuilder buffer = new StringBuilder();
           buffer.append(String.format("Expected content type %s, but found %s\n", HttpConstants.APPLICATION_JSON, actualContentType));
           buffer.append(String.format("Url: %s\n", url));
@@ -186,7 +190,7 @@ public class TmdbManager implements TmdbApi {
           throw new MovieException(buffer.toString());
         }
 
-        TmdbRateLimiter.wait(httpGet.getAllHeaders());
+        _tmdbRateLimiter.wait(httpGet.getAllHeaders());
 
         return content;
       }

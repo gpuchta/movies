@@ -1,14 +1,15 @@
 package com.movie.index;
 
+import com.movie.index.util.Assertion;
+import com.movie.index.util.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 
-import com.movie.index.util.Assertion;
-import com.movie.index.util.ExtLogger;
-import com.movie.index.util.FileUtils;
+public class Config {
 
-public class Config implements Logging {
-
-  private static final ExtLogger LOG = ExtLogger.getLogger(Config.class);
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
 
   private static final String DB_FOLDER = "db";
   private static final String IMAGE_FOLDER = "image";
@@ -23,7 +24,7 @@ public class Config implements Logging {
 
   public Config setDataFolder(File dataFolder) {
     if(!dataFolder.exists() || !dataFolder.isDirectory()) {
-      LOG.severe("data folder %s does not exist or is not a directory", dataFolder.getAbsolutePath());
+      LOG.warn("data folder {} does not exist or is not a directory", dataFolder.getAbsolutePath());
       return this;
     }
     _dataFolder = FileUtils.makeDir(dataFolder);
@@ -54,9 +55,9 @@ public class Config implements Logging {
   }
 
   public void log() {
-    LOG.info(CONFIG_LOG_FORMAT, "Config folder", _configFolder.getAbsolutePath());
-    LOG.info(CONFIG_LOG_FORMAT, "Data folder", _dataFolder.getAbsolutePath());
-    LOG.info(CONFIG_LOG_FORMAT, "Image folder", _imageFolder.getAbsolutePath());
-    LOG.info(CONFIG_LOG_FORMAT, "Database folder", _dbFolder.getAbsolutePath());
+    LOG.info("Config folder   {}", _configFolder.getAbsolutePath());
+    LOG.info("Data folder     {}", _dataFolder.getAbsolutePath());
+    LOG.info("Image folder    {}", _imageFolder.getAbsolutePath());
+    LOG.info("Database folder {}", _dbFolder.getAbsolutePath());
   }
 }

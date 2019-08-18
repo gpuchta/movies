@@ -1,18 +1,5 @@
 package com.movie.index.container.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpStatus;
-
 import com.movie.index.Config;
 import com.movie.index.app.model.Environment;
 import com.movie.index.app.model.Settings;
@@ -20,13 +7,25 @@ import com.movie.index.container.service.MovieServletContext;
 import com.movie.index.container.service.ServiceManager;
 import com.movie.index.db.dao.DaoFactory;
 import com.movie.index.tmdb.v3.TmdbManager;
-import com.movie.index.util.ExtLogger;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 
 @SuppressWarnings("serial")
 public abstract class AbstractHttpServlet extends HttpServlet {
 
-  protected final ExtLogger LOG = ExtLogger.getLogger(this.getClass());
+  protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
   protected boolean checkSettingsIncomplete(HttpServletResponse resp) throws IOException {
     if(!getSettings().isSetupComplete()) {

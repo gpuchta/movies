@@ -1,20 +1,19 @@
 package com.movie.index.db.dao;
 
+import com.movie.index.app.model.Settings;
+import com.movie.index.db.Datastore;
+import com.movie.index.exception.MovieDaoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.movie.index.app.model.Settings;
-import com.movie.index.db.Datastore;
-import com.movie.index.exception.MovieDaoException;
-import com.movie.index.util.ExtLogger;
-
 public class SettingsDao {
-
-  private static final ExtLogger LOG = ExtLogger.getLogger(SettingsDao.class);
-
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
   private Datastore _store;
 
   SettingsDao(Datastore store) {

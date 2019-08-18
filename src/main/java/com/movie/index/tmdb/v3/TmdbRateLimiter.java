@@ -1,19 +1,17 @@
 package com.movie.index.tmdb.v3;
 
+import com.movie.index.exception.MovieException;
+import org.apache.http.Header;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Date;
 
-import org.apache.http.Header;
-
-import com.movie.index.exception.MovieException;
-import com.movie.index.util.ExtLogger;
-
-public class TmdbRateLimiter {
-
-  protected static final ExtLogger LOG = ExtLogger.getLogger(TmdbRateLimiter.class);
-
+public final class TmdbRateLimiter {
   private static final String X_RATELIMIT_LIMIT     = "X-RateLimit-Limit";
   private static final String X_RATELIMIT_REMAINING = "X-RateLimit-Remaining";
   private static final String X_RATELIMIT_RESET     = "X-RateLimit-Reset";
+  protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
   /**
    *
@@ -41,7 +39,7 @@ public class TmdbRateLimiter {
    *
    * @param headers
    */
-  public static void wait(Header[] headers) {
+  public void wait(Header[] headers) {
 
     Integer limit = null;
     Integer remaining = null;

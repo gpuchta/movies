@@ -1,13 +1,14 @@
 package com.movie.index.app.favicon;
 
-import java.io.File;
-
 import com.movie.index.app.image.ImageConverter;
-import com.movie.index.util.ExtLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
 
 public class FaviconFactory {
 
-  private static final ExtLogger LOG = ExtLogger.getLogger(FaviconFactory.class);
+  private static final Logger LOG = LoggerFactory.getLogger(FaviconFactory.class);
 
   private static final String FAVICON_FOLDER_NAME = "favicon";
 

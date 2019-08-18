@@ -1,15 +1,14 @@
 package com.movie.index.app.model;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.google.gson.annotations.SerializedName;
-import com.movie.index.Logging;
-import com.movie.index.util.ExtLogger;
 import com.movie.index.util.GsonHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class Settings implements Logging {
+public class Settings {
 
-  private static final ExtLogger LOG = ExtLogger.getLogger(Settings.class);
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
 
   @SerializedName("tmdb_api_key")
   protected String _tmdbApiKey;
@@ -61,6 +60,6 @@ public class Settings implements Logging {
   }
 
   public void log() {
-    LOG.info(CONFIG_LOG_FORMAT, "API Key", _tmdbApiKey);
+    LOG.info("API Key         {}", _tmdbApiKey);
   }
 }

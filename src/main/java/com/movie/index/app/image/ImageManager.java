@@ -1,21 +1,20 @@
 package com.movie.index.app.image;
 
-import java.awt.image.BufferedImage;
-import java.net.URI;
+import com.movie.index.Config;
+import com.movie.index.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import java.awt.image.BufferedImage;
+import java.net.URI;
 
-import com.movie.index.Config;
-import com.movie.index.Constants;
-import com.movie.index.Logging;
-import com.movie.index.util.ExtLogger;
+public class ImageManager {
 
-public class ImageManager implements Logging {
+  private static final Logger LOG = LoggerFactory.getLogger(ImageManager.class);
 
   private static final String IMG_POSTER_DEFAULT_JPG = "/img/poster-default.jpg";
-
-  private static final ExtLogger LOG = ExtLogger.getLogger(ImageManager.class);
 
   private URI _posterDefaultFileUri;
   private BufferedImage _bufferedImage;
@@ -37,7 +36,7 @@ public class ImageManager implements Logging {
       imageDataUri = ImageConverter.toDataUri(bufferedImage, Constants.POSTER_WIDTH);
     }
     catch (Exception e) {
-      LOG.severe("Failed to load poster default image", e);
+      LOG.warn("Failed to load poster default image", e);
 
       try {
         posterDefaultFileUri = new URI("memory:///Constants.FALLBACK_POSTER_DATA_URI");
@@ -45,7 +44,7 @@ public class ImageManager implements Logging {
         bufferedImage = ImageConverter.fromDataUri(imageDataUri).get();
       }
       catch (Exception e2) {
-        LOG.severe("Failed to convert fallback poster to image", e2);
+        LOG.warn("Failed to convert fallback poster to image", e2);
         throw new RuntimeException(e2);
       }
     }
@@ -65,6 +64,6 @@ public class ImageManager implements Logging {
   }
 
   public void log() {
-    LOG.info(CONFIG_LOG_FORMAT, "Poster default", _posterDefaultFileUri);
+    LOG.info("Poster default {}", _posterDefaultFileUri);
   }
 }

@@ -13,6 +13,11 @@ with a letter and each page in the binder with its page number.
 With the MovieDB software I now can easily and quickly find movies and
 locate them (binder, online provider).
 
+## Requirements
+In order to search for movies you must obtain an API key from `The Movie
+DB` at [http://themoviedb.org](https://www.themoviedb.org/documentation/api).
+You will need to provide it in the settings page.
+
 ## Features
 * iPad friendly
 * Images scale based on screen size
@@ -31,4 +36,3 @@ locate them (binder, online provider).
 
 ### Searching TheMovieDB
 ![Searching TheMovieDB](README/screenshot-3.gif)
-
