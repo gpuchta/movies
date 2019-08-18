@@ -1,17 +1,15 @@
 package com.movie.index.container.servlet;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.http.HttpStatus;
-
 import com.movie.index.app.model.Movie;
 import com.movie.index.container.service.MovieServletContext;
 import com.movie.index.util.GsonHelper;
 import com.movie.index.util.PosterHelper;
+import org.apache.http.HttpStatus;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @SuppressWarnings("serial")
 public class MovieStoreServlet extends AbstractHttpServlet {

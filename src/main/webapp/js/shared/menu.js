@@ -20,7 +20,7 @@ movieDb.menu = (function() {
           .click(hide)
           .html('&times;'))
       .append($('<a>').attr('href', 'index.html').text('Browse'))
-      .append($('<a>').attr('href', 'manage.html').text('Update'))
+      .append($('<a>').attr('href', 'manage.html').text('Edit'))
       .append($('<a>').attr('href', 'settings.html').text('Settings'))
       .append($('<a>').attr('href', 'about.html').text('About'));
 

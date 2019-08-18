@@ -1,13 +1,13 @@
 package com.movie.index.container.service;
 
-import javax.servlet.ServletContext;
-
 import com.movie.index.Config;
 import com.movie.index.app.image.ImageManager;
 import com.movie.index.app.model.Environment;
 import com.movie.index.app.model.Settings;
 import com.movie.index.db.dao.DaoFactory;
 import com.movie.index.tmdb.v3.TmdbManager;
+
+import javax.servlet.ServletContext;
 
 public class MovieServletContext {
 

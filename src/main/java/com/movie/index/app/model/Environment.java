@@ -11,17 +11,16 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 public class Environment {
-
-  private final Logger LOG = LoggerFactory.getLogger(getClass());
+  private static final Logger LOG = LoggerFactory.getLogger(Environment.class);
 
   @SerializedName("data_folder")
-  protected File _dataFolder;
+  private File _dataFolder;
 
   public File getDataFolder() {
     return _dataFolder;
   }
 
-  public Environment setDataFolder(String dataFolder) {
+  Environment setDataFolder(String dataFolder) {
     setDataFolder(new File(dataFolder));
     return this;
   }

@@ -1,9 +1,9 @@
 package com.movie.index.tmdb.v3.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.google.gson.annotations.SerializedName;
 
 public class TmdbKeywords {
 

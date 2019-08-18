@@ -1,5 +1,14 @@
 package com.movie.index.util;
 
+import com.movie.index.Config;
+import com.movie.index.Constants;
+import com.movie.index.app.image.ImageConverter;
+import com.movie.index.app.image.ImageConverter.Format;
+import com.movie.index.app.image.ImageManager;
+import com.movie.index.app.model.Movie;
+import com.movie.index.tmdb.v3.TmdbMediaUrl;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -7,16 +16,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Optional;
-
-import javax.imageio.ImageIO;
-
-import com.movie.index.Config;
-import com.movie.index.Constants;
-import com.movie.index.app.image.ImageConverter;
-import com.movie.index.app.image.ImageManager;
-import com.movie.index.app.image.ImageConverter.Format;
-import com.movie.index.app.model.Movie;
-import com.movie.index.tmdb.v3.TmdbMediaUrl;
 
 public class PosterHelper {
 

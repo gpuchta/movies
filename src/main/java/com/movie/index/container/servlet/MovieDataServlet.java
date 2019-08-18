@@ -1,14 +1,13 @@
 package com.movie.index.container.servlet;
 
-import java.io.IOException;
-import java.util.List;
+import com.movie.index.app.model.Movie;
+import com.movie.index.util.GsonHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.movie.index.app.model.Movie;
-import com.movie.index.util.GsonHelper;
+import java.io.IOException;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class MovieDataServlet extends AbstractHttpServlet {

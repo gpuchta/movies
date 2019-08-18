@@ -1,5 +1,11 @@
 package com.movie.index.container.servlet;
 
+import org.apache.http.HttpStatus;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -7,13 +13,6 @@ import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
-import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.http.HttpStatus;
 
 
 

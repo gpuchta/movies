@@ -8,12 +8,10 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 public class Config {
-
-  private final Logger LOG = LoggerFactory.getLogger(getClass());
-
   private static final String DB_FOLDER = "db";
   private static final String IMAGE_FOLDER = "image";
 
+  private final Logger LOG = LoggerFactory.getLogger(getClass());
   private File _configFolder;
   private File _dataFolder;
   private File _imageFolder;

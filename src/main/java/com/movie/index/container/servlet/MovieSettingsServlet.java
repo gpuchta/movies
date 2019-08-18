@@ -1,19 +1,17 @@
 package com.movie.index.container.servlet;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.http.HttpStatus;
-
 import com.google.gson.annotations.SerializedName;
 import com.movie.index.app.environment.EnvironmentManager;
 import com.movie.index.app.model.Environment;
 import com.movie.index.app.model.Settings;
 import com.movie.index.util.GsonHelper;
+import org.apache.http.HttpStatus;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 
 @SuppressWarnings("serial")
 public class MovieSettingsServlet extends AbstractHttpServlet {

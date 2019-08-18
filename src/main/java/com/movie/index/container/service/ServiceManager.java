@@ -31,12 +31,15 @@ public class ServiceManager {
     File configFolder = new File(_context.getRealPath(WEB_INF));
 
     Config config = new Config().setConfigFolder(configFolder);
+    LOG.trace("set config instance on servlet context");
     MovieServletContext.setConfig(_context, config);
 
     Environment environment = EnvironmentManager.load(config);
+    LOG.trace("set environment instance on servlet context");
     MovieServletContext.setEnvironment(_context, environment);
 
     ImageManager imageManager = ImageManager.init(_context, config);
+    LOG.trace("set image manager instance on servlet context");
     MovieServletContext.setImageManager(_context, imageManager);
 
     Settings settings = null;
@@ -48,6 +51,7 @@ public class ServiceManager {
       _store.get().startup();
 
       DaoFactory daoFactory = DaoFactory.create(_store.get());
+      LOG.trace("set dao factory on servlet context");
       MovieServletContext.setDaoFactory(_context, daoFactory);
 
       settings = daoFactory.getSettingsDao().load();
@@ -57,9 +61,11 @@ public class ServiceManager {
     }
 
     if(settings != null && settings.hasTmdbApiKey()) {
+      LOG.trace("set tmdb manager instance on servlet context");
       MovieServletContext.setTmdbManager(_context, new TmdbManager(settings.getTmdbApiKey()));
     }
 
+    LOG.trace("set settings instance on servlet context");
     MovieServletContext.setSettings(_context, settings);
 
     config.log();

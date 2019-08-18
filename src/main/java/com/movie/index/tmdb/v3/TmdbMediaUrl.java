@@ -1,14 +1,14 @@
 package com.movie.index.tmdb.v3;
 
-import static com.movie.index.util.Arguments.arg;
+import com.movie.index.exception.MovieException;
+import com.movie.index.util.StringUtils;
 
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.movie.index.exception.MovieException;
-import com.movie.index.util.StringUtils;
+import static com.movie.index.util.Arguments.arg;
 
 public class TmdbMediaUrl {
   private static final String TMDB_BASE_URL = "https://image.tmdb.org/t/p";

@@ -1,11 +1,11 @@
 package com.movie.index.tmdb.v3.model;
 
+import com.google.gson.annotations.SerializedName;
+import com.movie.index.util.NumberUtils;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.google.gson.annotations.SerializedName;
-import com.movie.index.util.NumberUtils;
 
 public class TmdbMovie {
 

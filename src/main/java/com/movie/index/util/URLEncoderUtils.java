@@ -1,9 +1,9 @@
 package com.movie.index.util;
 
+import com.movie.index.exception.MovieException;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-
-import com.movie.index.exception.MovieException;
 
 public class URLEncoderUtils {
 

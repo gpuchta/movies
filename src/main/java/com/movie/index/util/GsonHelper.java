@@ -1,7 +1,5 @@
 package com.movie.index.util;
 
-import java.io.File;
-
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,6 +8,8 @@ import com.movie.index.util.gson.FileDeserializer;
 import com.movie.index.util.gson.FileSerializer;
 import com.movie.index.util.gson.LocatorDeserializer;
 import com.movie.index.util.gson.LocatorSerializer;
+
+import java.io.File;
 
 public class GsonHelper {
 

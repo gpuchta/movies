@@ -180,11 +180,11 @@ public class TmdbManager implements TmdbApi {
           buffer.append(String.format("Expected content type %s, but found %s\n", HttpConstants.APPLICATION_JSON, actualContentType));
           buffer.append(String.format("Url: %s\n", url));
           buffer.append(String.format("Request Headers:\n"));
-          Arrays.asList(httpGet.getAllHeaders()).stream().forEach(header -> {
+          Arrays.asList(httpGet.getAllHeaders()).forEach(header -> {
             buffer.append(String.format("- %s: %s\n", header.getName(), header.getValue()));
           });
           buffer.append(String.format("Response Headers:\n"));
-          Arrays.asList(response.getAllHeaders()).stream().forEach(header -> {
+          Arrays.asList(response.getAllHeaders()).forEach(header -> {
             buffer.append(String.format("- %s: %s\n", header.getName(), header.getValue()));
           });
           throw new MovieException(buffer.toString());

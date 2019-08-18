@@ -31,7 +31,7 @@ public class TmdbMovieDetailServlet extends AbstractHttpServlet {
     Integer tmdbId = NumberUtils.toInteger(StringUtils.stripStart(req.getPathInfo(), "/"));
 
     if(tmdbId == null) {
-      LOG.error("tmdb id is required");
+      LOG.error("tmdb id is missing");
       write(resp, "Tmdb ID in URL must not be empty");
       resp.setStatus(HttpStatus.SC_BAD_REQUEST);
       return;

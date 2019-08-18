@@ -7,8 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Settings {
-
-  private final Logger LOG = LoggerFactory.getLogger(getClass());
+  private static final Logger LOG = LoggerFactory.getLogger(Settings.class);
 
   @SerializedName("tmdb_api_key")
   protected String _tmdbApiKey;

@@ -1,22 +1,20 @@
 package com.movie.index.container.servlet;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpStatus;
-
 import com.movie.index.app.model.Movie;
 import com.movie.index.tmdb.v3.model.TmdbMovie;
 import com.movie.index.tmdb.v3.model.TmdbMovieSearch;
 import com.movie.index.util.GsonHelper;
 import com.movie.index.util.NumberUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpStatus;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * http://localhost:8080/movies/search?title=Ronin&year=1998

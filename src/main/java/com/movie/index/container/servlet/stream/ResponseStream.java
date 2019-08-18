@@ -1,14 +1,12 @@
 package com.movie.index.container.servlet.stream;
 
+import com.movie.index.app.callback.Callback;
+import org.apache.http.HttpStatus;
+
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.function.Function;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.http.HttpStatus;
-
-import com.movie.index.app.callback.Callback;
 
 public class ResponseStream<T> implements Callback<T> {
 

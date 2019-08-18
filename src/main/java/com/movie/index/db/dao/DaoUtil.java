@@ -1,12 +1,12 @@
 package com.movie.index.db.dao;
 
+import com.movie.index.exception.MovieSqlException;
+
 import java.sql.Array;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.movie.index.exception.MovieSqlException;
 
 public class DaoUtil {
 

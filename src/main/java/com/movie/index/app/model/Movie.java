@@ -1,13 +1,13 @@
 package com.movie.index.app.model;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.gson.annotations.SerializedName;
 import com.movie.index.tmdb.v3.model.TmdbMovie;
 import com.movie.index.util.GsonHelper;
 import com.movie.index.util.NumberUtils;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Movie {
 

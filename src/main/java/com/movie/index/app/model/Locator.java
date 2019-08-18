@@ -1,12 +1,12 @@
 package com.movie.index.app.model;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Locator {
 

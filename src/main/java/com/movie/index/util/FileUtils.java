@@ -1,9 +1,9 @@
 package com.movie.index.util;
 
+import com.movie.index.exception.MovieIOException;
+
 import java.io.File;
 import java.io.IOException;
-
-import com.movie.index.exception.MovieIOException;
 
 public class FileUtils {
 

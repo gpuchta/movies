@@ -1,8 +1,10 @@
 package com.movie.index.app.image;
 
-import static com.movie.index.util.Arguments.arg;
+import com.movie.index.exception.MovieException;
+import org.apache.commons.io.FilenameUtils;
 
-import java.awt.Image;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,11 +19,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.imageio.ImageIO;
-
-import org.apache.commons.io.FilenameUtils;
-
-import com.movie.index.exception.MovieException;
+import static com.movie.index.util.Arguments.arg;
 
 public class ImageConverter {
 
