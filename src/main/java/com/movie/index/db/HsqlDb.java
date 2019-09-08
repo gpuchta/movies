@@ -3,7 +3,9 @@ package com.movie.index.db;
 import com.movie.index.Config;
 import com.movie.index.db.dao.MovieDao;
 import com.movie.index.db.dao.SettingsDao;
+import com.movie.index.exception.MovieException;
 import com.movie.index.exception.MovieSqlException;
+import com.movie.index.log.LoggingWriter;
 import org.hsqldb.Database;
 import org.hsqldb.Server;
 import org.hsqldb.jdbc.JDBCDataSource;
@@ -11,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -24,6 +27,7 @@ class HsqlDb implements Datastore {
   private static final String USERNAME = "SA";
   private static final String PASSWORD = "";
 
+  private final Logger LOG_DB = LoggerFactory.getLogger(Server.class);
   private final Logger LOG = LoggerFactory.getLogger(getClass());
   private Config _config;
   private String _url;
@@ -40,25 +44,36 @@ class HsqlDb implements Datastore {
 
   @Override
   public Datastore startup() {
-    _url = String.format("%s:%s;sql.enforce_strict_size=true",
-        DB_PROTOCOL_FILE,
-        Paths.get(_config.getDbFolder().getAbsolutePath(), DB_NAME));
+    try {
+      _url = String.format("%s:%s;sql.enforce_strict_size=true",
+          DB_PROTOCOL_FILE,
+          Paths.get(_config.getDbFolder().getAbsolutePath(), DB_NAME));
 
-    String dbPath = String.format("file:%s;sql.enforce_strict_size=true",
-        Paths.get(_config.getDbFolder().getAbsolutePath(), DB_NAME));
+      String dbPath = String.format("file:%s;sql.enforce_strict_size=true",
+          Paths.get(_config.getDbFolder().getAbsolutePath(), DB_NAME));
 
-    _server = new Server();
-    _server.setDatabaseName(0, DB_NAME);
-    _server.setDatabasePath(0, dbPath);
-    _server.setLogWriter(null);
-    _server.setErrWriter(null);
-    _server.start();
+      LOG.info("Startup database");
+      LOG.info("Name   : {}", DB_NAME);
+      LOG.info("Url    : {}", _url);
+      LOG.info("DB Path: {}", dbPath);
 
-    if(!isReady()) {
-      initialize();
+      _server = new Server();
+      _server.setDatabaseName(0, DB_NAME);
+      _server.setDatabasePath(0, dbPath);
+      _server.setLogWriter(new PrintWriter(new LoggingWriter(LOG_DB)));
+      _server.setErrWriter(null);
+      _server.start();
+
+
+      if(!isReady()) {
+        initialize();
+      }
+
+      return this;
     }
-
-    return this;
+    catch(Throwable e) {
+      throw new MovieException("failed to start HSQL");
+    }
   }
 
   private boolean isReady() {
@@ -78,7 +93,7 @@ class HsqlDb implements Datastore {
   private void initialize() {
     try {
       Connection connection = getConnection();
-  
+
       SettingsDao.initialize(connection);
       MovieDao.initialize(connection);
   
@@ -94,6 +109,7 @@ class HsqlDb implements Datastore {
     try {
       JDBCDataSource dataSource = new JDBCDataSource();
       dataSource.setDatabase(_url);
+      dataSource.setLogWriter(new PrintWriter(new LoggingWriter(LOG_DB)));
       Connection connection = dataSource.getConnection(USERNAME,  PASSWORD);
       connection.setAutoCommit(true);
       return connection;

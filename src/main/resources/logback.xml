@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+  <!-- https://logback.qos.ch/manual/layouts.html#conversionWord -->
+
   <property name="HOME_LOG" value="logs/app.log"/>
 
-  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-    <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
-    </layout>
-  </appender>
-
-  <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="ROLLING-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${catalina.base}/logs/movies.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
       <fileNamePattern>${catalina.base}/logs/movies-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
@@ -18,16 +14,27 @@
       <maxHistory>3</maxHistory>
     </rollingPolicy>
     <encoder>
-      <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+      <pattern>%date{HH:mm:ss.SSS} [%-5level] %-36logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <logger name="com.movie.index" level="trace" additivity="false">
-    <appender-ref ref="FILE-ROLLING"/>
+  <!-- for debugging purposes only -->
+  <!--<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>-->
+
+  <logger name="com.movie.index" level="debug" additivity="false">
+    <appender-ref ref="ROLLING-FILE"/>
   </logger>
 
-  <root level="error">
-    <appender-ref ref="CONSOLE"/>
-  </root>
+  <logger name="ch.qos.logback" level="info" additivity="false">
+    <appender-ref ref="ROLLING-FILE"/>
+  </logger>
+
+  <logger name="org.hsqldb" level="debug" additivity="false">
+    <appender-ref ref="ROLLING-FILE"/>
+  </logger>
+
+  <!--<root level="error">-->
+    <!--<appender-ref ref="ROLLING-FILE"/>-->
+  <!--</root>-->
 
 </configuration>

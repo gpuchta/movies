@@ -156,7 +156,7 @@ public class TmdbManager implements TmdbApi {
    */
   protected String getAsJson(String url) {
     try {
-      LOG.trace("GET {}", url);
+      LOG.info("GET {}", url);
       HttpGet httpGet = new HttpGet(url);
       httpGet.addHeader(new BasicHeader(HttpHeaders.ACCEPT, HttpConstants.APPLICATION_JSON));
       httpGet.addHeader(new BasicHeader(HttpHeaders.CONTENT_TYPE, HttpConstants.CONTENT_TYPE_JSON_UTF_8));
@@ -165,8 +165,8 @@ public class TmdbManager implements TmdbApi {
       try(CloseableHttpResponse response = httpclient.execute(httpGet)) {
 
         if(response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-          LOG.trace("Status {}", response.getStatusLine().getStatusCode());
-          LOG.trace("Response {}", response.getStatusLine().getReasonPhrase());
+          LOG.warn("Status {}", response.getStatusLine().getStatusCode());
+          LOG.warn("Response {}", response.getStatusLine().getReasonPhrase());
           throw new MovieException(response.getStatusLine().getReasonPhrase());
         }
 
