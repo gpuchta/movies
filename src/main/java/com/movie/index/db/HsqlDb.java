@@ -4,6 +4,7 @@ import com.movie.index.Config;
 import com.movie.index.db.dao.MovieDao;
 import com.movie.index.db.dao.SettingsDao;
 import com.movie.index.exception.MovieSqlException;
+import org.hsqldb.Database;
 import org.hsqldb.Server;
 import org.hsqldb.jdbc.JDBCDataSource;
 import org.slf4j.Logger;
@@ -13,6 +14,8 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.Driver;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -112,7 +115,15 @@ class HsqlDb implements Datastore {
 
   @Override
   public void shutdown() {
-    _server.stop();
+    LOG.info("Shutdown database");
+    _server.shutdownCatalogs(Database.CLOSEMODE_NORMAL);
+    try {
+      LOG.info("Deregister driver " + _url);
+      Driver driver = DriverManager.getDriver(_url);
+      DriverManager.deregisterDriver(driver);
+    } catch (SQLException e) {
+      throw new MovieSqlException(e);
+    }
   }
 }
 
