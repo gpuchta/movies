@@ -18,6 +18,33 @@ from within the IDE.
   </tomcat-users>
   ```
 
+* Create Tomcat context configuration file 
+
+  Configuration file `movies.xml` will allow you to build and package
+  you application within your IDE and have Tomcat reload it.
+
+  ```
+  C:\Users\<username>\apps\apache-tomcat-7.0.92\conf\Catalina\localhost\movies.xml
+  ```
+  Define the Linux path to where the `.war` file is if you start Tomcat
+  from the Linux subsystem on Windows.
+  ```Xml
+  <Context 
+    docBase="/mnt/c/Users/<username>/path/to/moviedb/target/movies.war" 
+    path="" 
+    reloadable="true" 
+  />
+  ```
+  Define the Windows path if you start Tomcat from a DOS shell.
+  ```Xml
+  <Context 
+    docBase="C:\Users\<username>\path\to\moviedb\target\movies.war" 
+    path="" 
+    reloadable="true" 
+  />
+  ```
+  
+
 * Install and start Tomcat
 
 * Add to pom.xml
