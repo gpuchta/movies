@@ -1,5 +1,16 @@
 # Notes
 
+## webjars
+
+### Instructions for Servlet 3
+With any Servlet 3 compatible container, the WebJars that are in the
+`WEB-INF/lib` directory are automatically made available as static
+resources. This works because anything in a `META-INF/resources`
+directory in a JAR in `WEB-INF/lib` is automatically exposed as a static
+resource.
+
+[Search for WebJars at https://www.webjars.org](https://www.webjars.org)
+
 ## ffmpeg
 
 A complete, cross-platform solution to record, convert and stream
